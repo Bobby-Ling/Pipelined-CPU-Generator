@@ -1,6 +1,26 @@
 #!/bin/python3
-# Authored by Fluorinedog
+# Authored by Bobby Ling
 import re
+
+# config
+stages = ["IF", "ID", "EX", "MEM", "WB"]
+pipelines = [f"{stages[i]}_{stages[i+1]}" for i in range (len(stages)-1)]
+wire_defines_file = "inc/PipelineStageWireDefs.vh"
+pipeline_interface_template_file = "PipelineInterfaceTemplate.v"
+generated_module_name = "PipelineInterface_{0}"
+generated_instantiated_module_name = f"{generated_module_name}_U"
+generated_instantiated_module_file = f"{generated_module_name}.v"
+generated_instantiated_module_include_file = f"inc/{generated_module_name}_Inst.vh"
+
+
+with open(wire_defines_file) as defines_file:
+    pass
+
+with open(pipeline_interface_template_file) as template_file:
+    pass
+
+
+
 pattern = re.compile(r"^(wire|reg) +(\[.*\])?(.*);")
 
 table = [[] for i in range(0, 6)]
