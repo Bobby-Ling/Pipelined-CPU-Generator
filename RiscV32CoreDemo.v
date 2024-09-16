@@ -3,55 +3,52 @@
 // Brief: CPU Top Module, synchronized
 // Main-Author: EAirPeter
 // co-Author: Fluorine Dog, cuishaobo, AzureCrab, ghy
-module SynLajiIntelKnightsLanding(
+// Modified-By: Bobby Ling
+module RiscV32CoreDemo(
     input clk, 
     input rst_n, 
     input en
 );
 
-    `include "inc/Laji_defines_inc.vh"
+    `include "inc/PipelineStageWireDefs.vh"
 
-    // YOUR CODE FOR STAGE 0 HERE
+    // YOUR CODE FOR STAGE IF HERE
 
     ////////////////////////////
     ///////   ps1 IF/ID  ////////
     assign en_vps1 = 1;
     assign clear_vps1 = 1; 
-    `include "inc/Laji_vPS1_inc.vh"
+    `include "inc/PipelineInterface_IF_ID_Inst.vh"
     ////////////////////////////
     
-    // YOUR CODE FOR STAGE 1 HERE
-    // code to use or generate xxxx_ps1
+    // YOUR CODE FOR STAGE ID HERE
 
     /////////////////////////////
     ///////   ps2 ID/EX  ////////
     assign en_vps2 = 1;
     assign clear_vps2 = 1;
-    `include "inc/Laji_vPS2_inc.vh"
+    `include "inc/PipelineInterface_ID_EX_Inst.vh"
     /////////////////////////////
 
-    // YOUR CODE FOR STAGE 2 HERE
-    // code to use or generate xxxx_ps2
+    // YOUR CODE FOR STAGE EX HERE
 
     /////////////////////////////
     ///////   ps3 EX/MEM  ////////
     assign en_vps3 = 1;
     assign clear_vps3 = 1;
-    `include "inc/Laji_vPS3_inc.vh"
+    `include "inc/PipelineInterface_EX_MEM_Inst.vh"
     ////////////////////////////
 
-    // YOUR CODE FOR STAGE 3 HERE   
-    // code to use or generate xxxx_ps3
+    // YOUR CODE FOR STAGE MEM HERE   
 
     //////////////////////////////
     //////   ps4 MEM/WB  /////////
     assign en_vps4 = 1;
     assign clear_vps4 = 1;
-    `include "inc/Laji_vPS4_inc.vh"
+    `include "inc/PipelineInterface_MEM_WB_Inst.vh"
     //////////////////////////////
 
-    // YOUR CODE FOR STAGE 4 HERE
-    // code to use or generate xxxx_ps4
+    // YOUR CODE FOR STAGE WB HERE
 
 endmodule
 

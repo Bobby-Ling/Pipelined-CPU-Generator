@@ -1,18 +1,33 @@
-wire data_ps2, data_ps3, data_ps4;
-// more real world example here
-wire [31:0] inst_ps0, inst_ps1;
-wire [5:0] opcode, funct;
-wire [4:0] rt;
-reg [4:0] regfile_req_b_ps1;          // conbinatorial 
-wire [4:0] rd_ps1, rd_ps2, rd_ps3;
-wire regfile_w_en_ps1, regfile_w_en_ps2, regfile_w_en_ps3, regfile_w_en_ps4;
-wire [4:0] regfile_req_w_ps2, regfile_req_w_ps3, regfile_req_w_ps4;
-reg [31:0] regfile_data_w_ps4;  // combinatorial
-wire r_datamem_ps1, r_datamem_ps2, r_datamem_ps3, r_datamem_ps4;
-wire bubble;
-wire [1:0] bht_state_ps0, bht_state_ps1, bht_state_ps2, bht_state_ps3; 
-wire is_branch_ps1, is_branch_ps2, is_branch_ps3;
-wire pred_succ, pred_succ_tmp;
-wire intr_jmp;
-wire clear_vps1, clear_vps2, clear_vps3, clear_vps4;
-// to be continued
+// regex: r"^(wire|reg) +(\[.*\])?(.*);"
+wire [31:0] IF_IR_w,    ID_IR_w,        EX_IR_w,        MEM_IR_w,       WB_IR_w;
+wire [31:0] IF_PC_w,    ID_PC_w,        EX_PC_w,        MEM_PC_w,       WB_PC_w;
+
+wire                    ID_JALR_w,      EX_JALR_w,      MEM_JALR_w,     WB_JALR_w;
+wire                    ID_JAL_w,       EX_JAL_w,       MEM_JAL_w,      WB_JAL_w;
+wire                    ID_ECALL_w,     EX_ECALL_w,     MEM_ECALL_w,    WB_ECALL_w;
+wire                    ID_RegWrite_w,  EX_RegWrite_w,  MEM_RegWrite_w, WB_RegWrite_w;
+wire                    ID_MemtoReg_w,  EX_MemtoReg_w,  MEM_MemtoReg_w, WB_MemtoReg_w;
+wire [31:0]             ID_R1_w,        EX_R1_w,        MEM_R1_w,       WB_R1_w;
+wire [31:0]             ID_R2_w,        EX_R2_w,        MEM_R2_w,       WB_R2_w;
+wire [4:0]              ID_WrtNo_w,     EX_WrtNo_w,     MEM_WrtNo_w,    WB_WrtNo_w;
+wire                    ID_MemWrite_w,  EX_MemWrite_w,  MEM_MemWrite_w;
+wire                    ID_AluRst2_w,   EX_AluRst2_w;
+wire                    ID_Branch_w,    EX_Branch_w;
+wire [3:0]              ID_AluOp_w,     EX_AluOp_w;
+wire                    ID_Alu1U_w,     EX_Alu1U_w;
+wire                    ID_Alu2U_w,     EX_Alu2U_w;
+wire                    ID_AluSrcB_w,   EX_AluSrcB_w;
+wire                    ID_SType_w,     EX_SType_w;
+wire                    ID_URET_w,      EX_URET_w;
+wire                    ID_rs1Fwd_w,    EX_rs1Fwd_w;
+wire                    ID_rs2Fwd_w,    EX_rs2Fwd_w;
+
+wire [31:0]             ID_I_Imm12_w,   EX_I_Imm12_w;
+wire [31:0]             ID_S_Imm12_w,   EX_S_Imm12_w;
+wire [31:0]             ID_B_Imm12_w,   EX_B_Imm12_w;
+wire [31:0]             ID_U_Imm20_w,   EX_U_Imm20_w;
+wire [31:0]             ID_UJ_Imm20_w,  EX_UJ_Imm20_w;
+
+wire [31:0]                             EX_AluOut_w,    MEM_AluOut_w,   WB_AluOut_w;
+wire [31:0]                             EX_CSRData_w,   MEM_CSRData_w,  WB_CSRData_w;
+wire [31:0]                                             MEM_MDout_w,    WB_MDout_w; 
