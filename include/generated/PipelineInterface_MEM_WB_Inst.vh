@@ -1,15 +1,34 @@
-    // dog auto generation
-    SynPS4 vPS4(
+    // used for generating pipeline interface modules
+    // generated file, do not edit
+    PipelineInterface_MEM_WB PipelineInterface_MEM_WB_U(
         .clk(clk),
-        .rst_n(rst_n),
-        .en(en_vps4),
-        .clear(clear_vps4),
-        .data_in(data_ps3),
-        .data(data_ps4),
-        .regfile_w_en_in(regfile_w_en_ps3),
-        .regfile_w_en(regfile_w_en_ps4),
-        .regfile_req_w_in(regfile_req_w_ps3),
-        .regfile_req_w(regfile_req_w_ps4),
-        .r_datamem_in(r_datamem_ps3),
-        .r_datamem(r_datamem_ps4)
+        .async_rst(async_rst),
+        .sync_rst(MEM_WB_sync_rst),
+        .en(MEM_WB_en),
+        .JALR_i(MEM_JALR_w),
+        .JALR_o(WB_JALR_w),
+        .MDout_i(MEM_MDout_w),
+        .MDout_o(WB_MDout_w),
+        .R1_i(MEM_R1_w),
+        .R1_o(WB_R1_w),
+        .PC_i(MEM_PC_w),
+        .PC_o(WB_PC_w),
+        .RegWrite_i(MEM_RegWrite_w),
+        .RegWrite_o(WB_RegWrite_w),
+        .AluOut_i(MEM_AluOut_w),
+        .AluOut_o(WB_AluOut_w),
+        .R2_i(MEM_R2_w),
+        .R2_o(WB_R2_w),
+        .MemtoReg_i(MEM_MemtoReg_w),
+        .MemtoReg_o(WB_MemtoReg_w),
+        .ECALL_i(MEM_ECALL_w),
+        .ECALL_o(WB_ECALL_w),
+        .CSRData_i(MEM_CSRData_w),
+        .CSRData_o(WB_CSRData_w),
+        .WrtNo_i(MEM_WrtNo_w),
+        .WrtNo_o(WB_WrtNo_w),
+        .JAL_i(MEM_JAL_w),
+        .JAL_o(WB_JAL_w),
+        .IR_i(MEM_IR_w),
+        .IR_o(WB_IR_w)
     );

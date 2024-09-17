@@ -1,42 +1,159 @@
 `timescale 1ns / 1ps
-`include "Core.vh"
-// Brief: pipeline stage2, sychronized
-// Author: FluorineDog
-module SynPS2(
-    input clk,
-    input rst_n,
-    input en,       
-    input clear,
-    input [4:0] rd_in,
-    input regfile_w_en_in,
-    input r_datamem_in,
-    input [1:0] bht_state_in,
-    input is_branch_in,
-    output reg [4:0] rd,
-    output reg regfile_w_en,
-    output reg r_datamem,
-    output reg [1:0] bht_state,
-    output reg is_branch
+
+// used for generating pipeline interface modules
+// generated file, do not edit
+module PipelineInterface_ID_EX
+#(
+    parameter DEBUG=0
+)
+(
+    input  clk;
+    input  async_rst;
+    input  sync_rst;
+    input  en;
+    // input      [31:0] signal_i;
+    // output reg [31:0] signal_o;
+    input      [31:0] UJ_Imm20_i;
+    output reg [31:0] UJ_Imm20_i;
+    input       MemtoReg_i;
+    output reg  MemtoReg_i;
+    input       ECALL_i;
+    output reg  ECALL_i;
+    input      [3:0] AluOp_i;
+    output reg [3:0] AluOp_i;
+    input       Branch_i;
+    output reg  Branch_i;
+    input       AluRst2_i;
+    output reg  AluRst2_i;
+    input       MemWrite_i;
+    output reg  MemWrite_i;
+    input       rs2Fwd_i;
+    output reg  rs2Fwd_i;
+    input       JALR_i;
+    output reg  JALR_i;
+    input      [31:0] PC_i;
+    output reg [31:0] PC_i;
+    input      [31:0] U_Imm20_i;
+    output reg [31:0] U_Imm20_i;
+    input       AluSrcB_i;
+    output reg  AluSrcB_i;
+    input      [31:0] R2_i;
+    output reg [31:0] R2_i;
+    input      [31:0] I_Imm12_i;
+    output reg [31:0] I_Imm12_i;
+    input      [4:0] WrtNo_i;
+    output reg [4:0] WrtNo_i;
+    input       Alu1U_i;
+    output reg  Alu1U_i;
+    input       JAL_i;
+    output reg  JAL_i;
+    input      [31:0] IR_i;
+    output reg [31:0] IR_i;
+    input      [31:0] R1_i;
+    output reg [31:0] R1_i;
+    input       rs1Fwd_i;
+    output reg  rs1Fwd_i;
+    input       RegWrite_i;
+    output reg  RegWrite_i;
+    input      [31:0] B_Imm12_i;
+    output reg [31:0] B_Imm12_i;
+    input       SType_i;
+    output reg  SType_i;
+    input       Alu2U_i;
+    output reg  Alu2U_i;
+    input      [31:0] S_Imm12_i;
+    output reg [31:0] S_Imm12_i;
+    input       URET_i;
+    output reg  URET_i;
 );
-    always @(posedge clk, negedge rst_n) begin
-        if (!rst_n) begin 
-            rd <= 0;
-            regfile_w_en <= 0;
-            r_datamem <= 0;
-            bht_state <= 0;
-            is_branch <= 0;
-        end else if(!clear) begin
-            rd <= 0;
-            regfile_w_en <= 0;
-            r_datamem <= 0;
-            bht_state <= 0;
-            is_branch <= 0;
+    always @(posedge clk or negedge async_rst) begin;
+        if (!async_rst) begin
+            // do async reset
+            // signal_o <= 0;
+            UJ_Imm20_o <= 0;
+            MemtoReg_o <= 0;
+            ECALL_o <= 0;
+            AluOp_o <= 0;
+            Branch_o <= 0;
+            AluRst2_o <= 0;
+            MemWrite_o <= 0;
+            rs2Fwd_o <= 0;
+            JALR_o <= 0;
+            PC_o <= 0;
+            U_Imm20_o <= 0;
+            AluSrcB_o <= 0;
+            R2_o <= 0;
+            I_Imm12_o <= 0;
+            WrtNo_o <= 0;
+            Alu1U_o <= 0;
+            JAL_o <= 0;
+            IR_o <= 0;
+            R1_o <= 0;
+            rs1Fwd_o <= 0;
+            RegWrite_o <= 0;
+            B_Imm12_o <= 0;
+            SType_o <= 0;
+            Alu2U_o <= 0;
+            S_Imm12_o <= 0;
+            URET_o <= 0;
+        end else if (sync_rst) begin
+            // do sync reset 
+            // signal_o <= 0;
+            UJ_Imm20_o <= 0;
+            MemtoReg_o <= 0;
+            ECALL_o <= 0;
+            AluOp_o <= 0;
+            Branch_o <= 0;
+            AluRst2_o <= 0;
+            MemWrite_o <= 0;
+            rs2Fwd_o <= 0;
+            JALR_o <= 0;
+            PC_o <= 0;
+            U_Imm20_o <= 0;
+            AluSrcB_o <= 0;
+            R2_o <= 0;
+            I_Imm12_o <= 0;
+            WrtNo_o <= 0;
+            Alu1U_o <= 0;
+            JAL_o <= 0;
+            IR_o <= 0;
+            R1_o <= 0;
+            rs1Fwd_o <= 0;
+            RegWrite_o <= 0;
+            B_Imm12_o <= 0;
+            SType_o <= 0;
+            Alu2U_o <= 0;
+            S_Imm12_o <= 0;
+            URET_o <= 0;
         end else if(en) begin
-            rd <= rd_in;
-            regfile_w_en <= regfile_w_en_in;
-            r_datamem <= r_datamem_in;
-            bht_state <= bht_state_in;
-            is_branch <= is_branch_in;
+            // propagate to next pipeline stage
+            // signal_o <= signal_i;
+            UJ_Imm20_o <= UJ_Imm20_i;
+            MemtoReg_o <= MemtoReg_i;
+            ECALL_o <= ECALL_i;
+            AluOp_o <= AluOp_i;
+            Branch_o <= Branch_i;
+            AluRst2_o <= AluRst2_i;
+            MemWrite_o <= MemWrite_i;
+            rs2Fwd_o <= rs2Fwd_i;
+            JALR_o <= JALR_i;
+            PC_o <= PC_i;
+            U_Imm20_o <= U_Imm20_i;
+            AluSrcB_o <= AluSrcB_i;
+            R2_o <= R2_i;
+            I_Imm12_o <= I_Imm12_i;
+            WrtNo_o <= WrtNo_i;
+            Alu1U_o <= Alu1U_i;
+            JAL_o <= JAL_i;
+            IR_o <= IR_i;
+            R1_o <= R1_i;
+            rs1Fwd_o <= rs1Fwd_i;
+            RegWrite_o <= RegWrite_i;
+            B_Imm12_o <= B_Imm12_i;
+            SType_o <= SType_i;
+            Alu2U_o <= Alu2U_i;
+            S_Imm12_o <= S_Imm12_i;
+            URET_o <= URET_i;
         end
     end
 endmodule

@@ -1,11 +1,12 @@
-    // dog auto generation
-    SynPS1 vPS1(
+    // used for generating pipeline interface modules
+    // generated file, do not edit
+    PipelineInterface_IF_ID PipelineInterface_IF_ID_U(
         .clk(clk),
-        .rst_n(rst_n),
-        .en(en_vps1),
-        .clear(clear_vps1),
-        .inst_in(inst_ps0),
-        .inst(inst_ps1),
-        .bht_state_in(bht_state_ps0),
-        .bht_state(bht_state_ps1)
+        .async_rst(async_rst),
+        .sync_rst(IF_ID_sync_rst),
+        .en(IF_ID_en),
+        .IR_i(IF_IR_w),
+        .IR_o(ID_IR_w),
+        .PC_i(IF_PC_w),
+        .PC_o(ID_PC_w)
     );

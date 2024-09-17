@@ -56,7 +56,7 @@ def generate(dry_run = True):
         signal_dict, stage_dict = wire_defines_parser(wire_defines_path)
         
         for pipeline, src_stage, dest_stage in zip(pipelines, stages[:-1], stages[1:]):
-            with open(gen_module_path.format(pipeline)) as gen_module_file, open(gen_inst_module_path.format(pipeline)) as gen_inst_module_file:
+            with open(gen_module_path.format(pipeline), '+w') as gen_module_file, open(gen_inst_module_path.format(pipeline), 'w') as gen_inst_module_file:
                 # module/inst   /*placeholder{0}*/
                 module_name_suffix_tmpl:str = "{0}"
                 module_name_suffix_gen:str = module_name_suffix_tmpl.format(pipeline)
@@ -108,7 +108,7 @@ def generate(dry_run = True):
                     propagate_gen += propagate_tmpl.format(TAB3, signal)
                     inst_args_gen += inst_args_tmpl.format(TAB2, signal, src_stage, dest_stage)
                     
-                generated_module = module_template.format(module_name_suffix_gen, io_define_gen, reset_gen, propagate_gen)
+                generated_module = module_template.format(module_name_suffix_gen, io_define_gen[:-1], reset_gen[:-1], propagate_gen[:-1])
                 generated_inst = inst_template.format(module_name_suffix_gen, inst_args_gen[:-2]) # remove last ','
                 
                 if dry_run:
@@ -116,6 +116,8 @@ def generate(dry_run = True):
                     print(generated_inst)
                 else:
                     gen_module_file.write(generated_module)
+                    print(f"writing {pipeline} module to {gen_inst_module_path.format(pipeline)}")
                     gen_inst_module_file.write(generated_inst)
+                    print(f"writing {pipeline} module to {gen_module_path.format(pipeline)}") 
                     
 generate(dry_run=False)

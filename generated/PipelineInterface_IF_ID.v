@@ -1,27 +1,39 @@
 `timescale 1ns / 1ps
-`include "Core.vh"
-// Brief: pipeline stage1, sychronized
-// Author: FluorineDog
-module SynPS1(
-    input clk,
-    input rst_n,
-    input en,       
-    input clear,
-    input [31:0] inst_in,
-    input [1:0] bht_state_in,
-    output reg [31:0] inst,
-    output reg [1:0] bht_state
+
+// used for generating pipeline interface modules
+// generated file, do not edit
+module PipelineInterface_IF_ID
+#(
+    parameter DEBUG=0
+)
+(
+    input  clk;
+    input  async_rst;
+    input  sync_rst;
+    input  en;
+    // input      [31:0] signal_i;
+    // output reg [31:0] signal_o;
+    input      [31:0] IR_i;
+    output reg [31:0] IR_i;
+    input      [31:0] PC_i;
+    output reg [31:0] PC_i;
 );
-    always @(posedge clk, negedge rst_n) begin
-        if (!rst_n) begin 
-            inst <= 0;
-            bht_state <= 0;
-        end else if(!clear) begin
-            inst <= 0;
-            bht_state <= 0;
+    always @(posedge clk or negedge async_rst) begin;
+        if (!async_rst) begin
+            // do async reset
+            // signal_o <= 0;
+            IR_o <= 0;
+            PC_o <= 0;
+        end else if (sync_rst) begin
+            // do sync reset 
+            // signal_o <= 0;
+            IR_o <= 0;
+            PC_o <= 0;
         end else if(en) begin
-            inst <= inst_in;
-            bht_state <= bht_state_in;
+            // propagate to next pipeline stage
+            // signal_o <= signal_i;
+            IR_o <= IR_i;
+            PC_o <= PC_i;
         end
     end
 endmodule
