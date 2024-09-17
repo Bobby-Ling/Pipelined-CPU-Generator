@@ -45,7 +45,7 @@ def wire_defines_parser(wire_defines_path:str) -> tuple[dict[str, tuple[list[str
                     stage_dict[stage].append(signal)
         return signal_dict, stage_dict
         
-def generate():
+def generate(dry_run = True):
     with open(module_template_path) as template_file, open(module_inst_template_path) as inst_template_file:
         TAB1 = "    "
         TAB2 = TAB1 + TAB1
@@ -111,6 +111,11 @@ def generate():
                 generated_module = module_template.format(module_name_suffix_gen, io_define_gen, reset_gen, propagate_gen)
                 generated_inst = inst_template.format(module_name_suffix_gen, inst_args_gen[:-2]) # remove last ','
                 
-                gen_module_file.write(generated_module)
-                gen_inst_module_file.write(generated_inst)
-generate()
+                if dry_run:
+                    print(generated_module)
+                    print(generated_inst)
+                else:
+                    gen_module_file.write(generated_module)
+                    gen_inst_module_file.write(generated_inst)
+                    
+generate(dry_run=False)
