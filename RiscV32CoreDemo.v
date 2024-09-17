@@ -6,8 +6,7 @@
 // Modified-By: Bobby Ling
 module RiscV32CoreDemo(
     input clk, 
-    input rst_n, 
-    input en
+    input async_rst
 );
 
     `include "include/PipelineStageWireDefs.vh"
@@ -16,8 +15,8 @@ module RiscV32CoreDemo(
 
     ////////////////////////////
     ///////   ps1 IF/ID  ////////
-    assign en_vps1 = 1;
-    assign clear_vps1 = 1; 
+    assign IF_ID_en = 1;
+    assign IF_ID_sync_rst = 0; 
     `include "include/PipelineInterface_IF_ID_Inst.vh"
     ////////////////////////////
     
@@ -25,8 +24,8 @@ module RiscV32CoreDemo(
 
     /////////////////////////////
     ///////   ps2 ID/EX  ////////
-    assign en_vps2 = 1;
-    assign clear_vps2 = 1;
+    assign ID_EX_en = 1;
+    assign ID_EX_sync_rst = 0; 
     `include "include/PipelineInterface_ID_EX_Inst.vh"
     /////////////////////////////
 
@@ -34,8 +33,8 @@ module RiscV32CoreDemo(
 
     /////////////////////////////
     ///////   ps3 EX/MEM  ////////
-    assign en_vps3 = 1;
-    assign clear_vps3 = 1;
+    assign EX_MEM_en = 1;
+    assign EX_MEM_sync_rst = 0; 
     `include "include/PipelineInterface_EX_MEM_Inst.vh"
     ////////////////////////////
 
@@ -43,8 +42,8 @@ module RiscV32CoreDemo(
 
     //////////////////////////////
     //////   ps4 MEM/WB  /////////
-    assign en_vps4 = 1;
-    assign clear_vps4 = 1;
+    assign MEM_WB_en = 1;
+    assign MEM_WB_sync_rst = 0; 
     `include "include/PipelineInterface_MEM_WB_Inst.vh"
     //////////////////////////////
 
