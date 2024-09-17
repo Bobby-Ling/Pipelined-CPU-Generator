@@ -7,40 +7,40 @@ module PipelineInterface_MEM_WB
     parameter DEBUG=0
 )
 (
-    input  clk;
-    input  async_rst;
-    input  sync_rst;
-    input  en;
-    // input      [31:0] signal_i;
-    // output reg [31:0] signal_o;
-    input      [31:0] IR_i;
-    output reg [31:0] IR_i;
-    input      [31:0] PC_i;
-    output reg [31:0] PC_i;
-    input       JALR_i;
-    output reg  JALR_i;
-    input       JAL_i;
-    output reg  JAL_i;
-    input       ECALL_i;
-    output reg  ECALL_i;
-    input       RegWrite_i;
-    output reg  RegWrite_i;
-    input       MemtoReg_i;
-    output reg  MemtoReg_i;
-    input      [31:0] R1_i;
-    output reg [31:0] R1_i;
-    input      [31:0] R2_i;
-    output reg [31:0] R2_i;
-    input      [4:0] WrtNo_i;
-    output reg [4:0] WrtNo_i;
-    input      [31:0] AluOut_i;
-    output reg [31:0] AluOut_i;
-    input      [31:0] CSRData_i;
-    output reg [31:0] CSRData_i;
-    input      [31:0] MDout_i;
-    output reg [31:0] MDout_i;
+    input  clk,
+    input  async_rst,
+    input  sync_rst,
+    input  en,
+    // input      [31:0] signal_i,
+    // output reg [31:0] signal_o,
+    input      [31:0] IR_i,
+    output reg [31:0] IR_i,
+    input      [31:0] PC_i,
+    output reg [31:0] PC_i,
+    input       JALR_i,
+    output reg  JALR_i,
+    input       JAL_i,
+    output reg  JAL_i,
+    input       ECALL_i,
+    output reg  ECALL_i,
+    input       RegWrite_i,
+    output reg  RegWrite_i,
+    input       MemtoReg_i,
+    output reg  MemtoReg_i,
+    input      [31:0] R1_i,
+    output reg [31:0] R1_i,
+    input      [31:0] R2_i,
+    output reg [31:0] R2_i,
+    input      [4:0] WrtNo_i,
+    output reg [4:0] WrtNo_i,
+    input      [31:0] AluOut_i,
+    output reg [31:0] AluOut_i,
+    input      [31:0] CSRData_i,
+    output reg [31:0] CSRData_i,
+    input      [31:0] MDout_i,
+    output reg [31:0] MDout_i
 );
-    always @(posedge clk or negedge async_rst) begin;
+    always @(posedge clk or negedge async_rst) begin
         if (!async_rst) begin
             // do async reset
             // signal_o <= 0;

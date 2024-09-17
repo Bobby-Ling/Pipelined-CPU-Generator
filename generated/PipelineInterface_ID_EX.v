@@ -7,66 +7,66 @@ module PipelineInterface_ID_EX
     parameter DEBUG=0
 )
 (
-    input  clk;
-    input  async_rst;
-    input  sync_rst;
-    input  en;
-    // input      [31:0] signal_i;
-    // output reg [31:0] signal_o;
-    input      [31:0] IR_i;
-    output reg [31:0] IR_i;
-    input      [31:0] PC_i;
-    output reg [31:0] PC_i;
-    input       JALR_i;
-    output reg  JALR_i;
-    input       JAL_i;
-    output reg  JAL_i;
-    input       ECALL_i;
-    output reg  ECALL_i;
-    input       RegWrite_i;
-    output reg  RegWrite_i;
-    input       MemtoReg_i;
-    output reg  MemtoReg_i;
-    input      [31:0] R1_i;
-    output reg [31:0] R1_i;
-    input      [31:0] R2_i;
-    output reg [31:0] R2_i;
-    input      [4:0] WrtNo_i;
-    output reg [4:0] WrtNo_i;
-    input       MemWrite_i;
-    output reg  MemWrite_i;
-    input       AluRst2_i;
-    output reg  AluRst2_i;
-    input       Branch_i;
-    output reg  Branch_i;
-    input      [3:0] AluOp_i;
-    output reg [3:0] AluOp_i;
-    input       Alu1U_i;
-    output reg  Alu1U_i;
-    input       Alu2U_i;
-    output reg  Alu2U_i;
-    input       AluSrcB_i;
-    output reg  AluSrcB_i;
-    input       SType_i;
-    output reg  SType_i;
-    input       URET_i;
-    output reg  URET_i;
-    input       rs1Fwd_i;
-    output reg  rs1Fwd_i;
-    input       rs2Fwd_i;
-    output reg  rs2Fwd_i;
-    input      [31:0] I_Imm12_i;
-    output reg [31:0] I_Imm12_i;
-    input      [31:0] S_Imm12_i;
-    output reg [31:0] S_Imm12_i;
-    input      [31:0] B_Imm12_i;
-    output reg [31:0] B_Imm12_i;
-    input      [31:0] U_Imm20_i;
-    output reg [31:0] U_Imm20_i;
-    input      [31:0] UJ_Imm20_i;
-    output reg [31:0] UJ_Imm20_i;
+    input  clk,
+    input  async_rst,
+    input  sync_rst,
+    input  en,
+    // input      [31:0] signal_i,
+    // output reg [31:0] signal_o,
+    input      [31:0] IR_i,
+    output reg [31:0] IR_i,
+    input      [31:0] PC_i,
+    output reg [31:0] PC_i,
+    input       JALR_i,
+    output reg  JALR_i,
+    input       JAL_i,
+    output reg  JAL_i,
+    input       ECALL_i,
+    output reg  ECALL_i,
+    input       RegWrite_i,
+    output reg  RegWrite_i,
+    input       MemtoReg_i,
+    output reg  MemtoReg_i,
+    input      [31:0] R1_i,
+    output reg [31:0] R1_i,
+    input      [31:0] R2_i,
+    output reg [31:0] R2_i,
+    input      [4:0] WrtNo_i,
+    output reg [4:0] WrtNo_i,
+    input       MemWrite_i,
+    output reg  MemWrite_i,
+    input       AluRst2_i,
+    output reg  AluRst2_i,
+    input       Branch_i,
+    output reg  Branch_i,
+    input      [3:0] AluOp_i,
+    output reg [3:0] AluOp_i,
+    input       Alu1U_i,
+    output reg  Alu1U_i,
+    input       Alu2U_i,
+    output reg  Alu2U_i,
+    input       AluSrcB_i,
+    output reg  AluSrcB_i,
+    input       SType_i,
+    output reg  SType_i,
+    input       URET_i,
+    output reg  URET_i,
+    input       rs1Fwd_i,
+    output reg  rs1Fwd_i,
+    input       rs2Fwd_i,
+    output reg  rs2Fwd_i,
+    input      [31:0] I_Imm12_i,
+    output reg [31:0] I_Imm12_i,
+    input      [31:0] S_Imm12_i,
+    output reg [31:0] S_Imm12_i,
+    input      [31:0] B_Imm12_i,
+    output reg [31:0] B_Imm12_i,
+    input      [31:0] U_Imm20_i,
+    output reg [31:0] U_Imm20_i,
+    input      [31:0] UJ_Imm20_i,
+    output reg [31:0] UJ_Imm20_i
 );
-    always @(posedge clk or negedge async_rst) begin;
+    always @(posedge clk or negedge async_rst) begin
         if (!async_rst) begin
             // do async reset
             // signal_o <= 0;
