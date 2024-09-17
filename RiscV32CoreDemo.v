@@ -17,7 +17,7 @@ module RiscV32CoreDemo(
     ///////   ps1 IF/ID  ////////
     assign IF_ID_en = 1;
     assign IF_ID_sync_rst = 0; 
-    `include "include/PipelineInterface_IF_ID_Inst.vh"
+    `include "include/generated/PipelineInterface_IF_ID_Inst.vh"
     ////////////////////////////
     
     // YOUR CODE FOR STAGE ID HERE
@@ -26,7 +26,7 @@ module RiscV32CoreDemo(
     ///////   ps2 ID/EX  ////////
     assign ID_EX_en = 1;
     assign ID_EX_sync_rst = 0; 
-    `include "include/PipelineInterface_ID_EX_Inst.vh"
+    `include "include/generated/PipelineInterface_ID_EX_Inst.vh"
     /////////////////////////////
 
     // YOUR CODE FOR STAGE EX HERE
@@ -35,7 +35,7 @@ module RiscV32CoreDemo(
     ///////   ps3 EX/MEM  ////////
     assign EX_MEM_en = 1;
     assign EX_MEM_sync_rst = 0; 
-    `include "include/PipelineInterface_EX_MEM_Inst.vh"
+    `include "include/generated/PipelineInterface_EX_MEM_Inst.vh"
     ////////////////////////////
 
     // YOUR CODE FOR STAGE MEM HERE   
@@ -44,7 +44,7 @@ module RiscV32CoreDemo(
     //////   ps4 MEM/WB  /////////
     assign MEM_WB_en = 1;
     assign MEM_WB_sync_rst = 0; 
-    `include "include/PipelineInterface_MEM_WB_Inst.vh"
+    `include "include/generated/PipelineInterface_MEM_WB_Inst.vh"
     //////////////////////////////
 
     // YOUR CODE FOR STAGE WB HERE
