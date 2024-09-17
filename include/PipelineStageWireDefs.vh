@@ -1,4 +1,5 @@
-// regex: r"^(wire|reg) +(\[.*\])?(.*);"
+// valid line: r"^(wire|reg) +(\[.*\])?(.*);"
+// signal: r"(IF|ID|EX|MEM|WB)_(\w+)_w"
 wire [31:0] IF_IR_w,    ID_IR_w,        EX_IR_w,        MEM_IR_w,       WB_IR_w;
 wire [31:0] IF_PC_w,    ID_PC_w,        EX_PC_w,        MEM_PC_w,       WB_PC_w;
 
