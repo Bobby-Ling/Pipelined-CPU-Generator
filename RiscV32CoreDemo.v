@@ -10,7 +10,7 @@ module RiscV32CoreDemo(
     input en
 );
 
-    `include "inc/PipelineStageWireDefs.vh"
+    `include "include/PipelineStageWireDefs.vh"
 
     // YOUR CODE FOR STAGE IF HERE
 
@@ -18,7 +18,7 @@ module RiscV32CoreDemo(
     ///////   ps1 IF/ID  ////////
     assign en_vps1 = 1;
     assign clear_vps1 = 1; 
-    `include "inc/PipelineInterface_IF_ID_Inst.vh"
+    `include "include/PipelineInterface_IF_ID_Inst.vh"
     ////////////////////////////
     
     // YOUR CODE FOR STAGE ID HERE
@@ -27,7 +27,7 @@ module RiscV32CoreDemo(
     ///////   ps2 ID/EX  ////////
     assign en_vps2 = 1;
     assign clear_vps2 = 1;
-    `include "inc/PipelineInterface_ID_EX_Inst.vh"
+    `include "include/PipelineInterface_ID_EX_Inst.vh"
     /////////////////////////////
 
     // YOUR CODE FOR STAGE EX HERE
@@ -36,7 +36,7 @@ module RiscV32CoreDemo(
     ///////   ps3 EX/MEM  ////////
     assign en_vps3 = 1;
     assign clear_vps3 = 1;
-    `include "inc/PipelineInterface_EX_MEM_Inst.vh"
+    `include "include/PipelineInterface_EX_MEM_Inst.vh"
     ////////////////////////////
 
     // YOUR CODE FOR STAGE MEM HERE   
@@ -45,7 +45,7 @@ module RiscV32CoreDemo(
     //////   ps4 MEM/WB  /////////
     assign en_vps4 = 1;
     assign clear_vps4 = 1;
-    `include "inc/PipelineInterface_MEM_WB_Inst.vh"
+    `include "include/PipelineInterface_MEM_WB_Inst.vh"
     //////////////////////////////
 
     // YOUR CODE FOR STAGE WB HERE
