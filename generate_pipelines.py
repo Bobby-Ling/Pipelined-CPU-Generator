@@ -99,7 +99,9 @@ def generate(dry_run = True):
                 """
                 
                 # 取两个阶段所需传递的信号交集为当前流水线传递信号
-                signals = set(stage_dict[src_stage]) & set(stage_dict[dest_stage])
+                # stage_dict[src_stage] 和 stage_dict[dest_stage] 是两个有序列表
+                # signals = set(stage_dict[src_stage]) & set(stage_dict[dest_stage]) 会丢失顺序
+                signals = [item for item in stage_dict[src_stage] if item in stage_dict[dest_stage]]
                 
                 for signal in signals:
                     signal_width = signal_dict[signal][1]
@@ -112,8 +114,9 @@ def generate(dry_run = True):
                 generated_inst = inst_template.format(module_name_suffix_gen, inst_args_gen[:-2]) # remove last ','
                 
                 if dry_run:
-                    print(generated_module)
-                    print(generated_inst)
+                    pass
+                    # print(generated_module)
+                    # print(generated_inst)
                 else:
                     gen_module_file.write(generated_module)
                     print(f"writing {pipeline} module to {gen_inst_module_path.format(pipeline)}")

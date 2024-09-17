@@ -1,3 +1,4 @@
+    `include "../../generated/PipelineInterface_IF_ID.v"
     // used for generating pipeline interface modules
     // generated file, do not edit
     PipelineInterface_IF_ID PipelineInterface_IF_ID_U(

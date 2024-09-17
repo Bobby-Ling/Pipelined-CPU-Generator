@@ -1,3 +1,4 @@
+    `include "../../generated/PipelineInterface_/*placeholder{0}*/.v"
     // used for generating pipeline interface modules
     // generated file, do not edit
     PipelineInterface_/*placeholder{0}*/ PipelineInterface_/*placeholder{0}*/_U(
