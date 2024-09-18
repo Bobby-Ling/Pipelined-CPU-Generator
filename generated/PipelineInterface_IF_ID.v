@@ -14,9 +14,9 @@ module PipelineInterface_IF_ID
     // input      [31:0] signal_i,
     // output reg [31:0] signal_o,
     input      [31:0] IR_i,
-    output reg [31:0] IR_i,
+    output reg [31:0] IR_o,
     input      [31:0] PC_i,
-    output reg [31:0] PC_i
+    output reg [31:0] PC_o
 );
     always @(posedge clk or negedge async_rst) begin
         if (!async_rst) begin

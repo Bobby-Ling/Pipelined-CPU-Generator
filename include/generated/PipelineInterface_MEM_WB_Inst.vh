@@ -1,4 +1,3 @@
-    `include "../../generated/PipelineInterface_MEM_WB.v"
     // used for generating pipeline interface modules
     // generated file, do not edit
     PipelineInterface_MEM_WB PipelineInterface_MEM_WB_U(

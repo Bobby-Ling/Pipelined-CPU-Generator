@@ -1,5 +1,6 @@
 #!/bin/python3
 # Authored by Bobby Ling
+import os
 import re
 import textwrap
 
@@ -69,7 +70,7 @@ def generate(dry_run = True):
                 # dedent去除前导空格, """\去除首行\n
                 io_define_tmpl:str = textwrap.dedent("""\
                 {0}input      {1} {2}_i,
-                {0}output reg {1} {2}_i,
+                {0}output reg {1} {2}_o,
                 """)
                 io_define_gen = ""
                 """e.g.
@@ -122,8 +123,8 @@ def generate(dry_run = True):
                     print(generated_inst)
                 else:
                     gen_module_file.write(generated_module)
-                    print(f"writing {pipeline} module to {gen_inst_module_path.format(pipeline)}")
+                    print(f"writing {pipeline} module to {os.path.abspath(gen_module_path.format(pipeline))}")
                     gen_inst_module_file.write(generated_inst)
-                    print(f"writing {pipeline} module to {gen_module_path.format(pipeline)}") 
+                    print(f"writing {pipeline} module to {os.path.abspath(gen_inst_module_path.format(pipeline))}") 
                     
 generate(dry_run=False)
