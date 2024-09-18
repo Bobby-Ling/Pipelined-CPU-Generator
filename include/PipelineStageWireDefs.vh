@@ -1,4 +1,4 @@
-// valid line: r"^(wire|reg) +(\[.*\])?(.*);"
+// valid line: r"^(?:wire|reg) +(\[.*\])?\s*((?:(?:IF|ID|EX|MEM|WB)+_\w+_w(?:,|;)\s*)+)"
 // signal: r"(IF|ID|EX|MEM|WB)_(\w+)_w"
 wire [31:0] IF_IR_w,    ID_IR_w,        EX_IR_w,        MEM_IR_w,       WB_IR_w;
 wire [31:0] IF_PC_w,    ID_PC_w,        EX_PC_w,        MEM_PC_w,       WB_PC_w;
@@ -32,3 +32,7 @@ wire [31:0]             ID_UJ_Imm20_w,  EX_UJ_Imm20_w;
 wire [31:0]                             EX_AluOut_w,    MEM_AluOut_w,   WB_AluOut_w;
 wire [31:0]                             EX_CSRData_w,   MEM_CSRData_w,  WB_CSRData_w;
 wire [31:0]                                             MEM_MDout_w,    WB_MDout_w; 
+
+// will not be parsered
+wire        IF_ID_en,   ID_EX_en,       EX_MEM_en,      MEM_WB_en;
+wire        IF_ID_sync_rst,    ID_EX_sync_rst,        EX_MEM_sync_rst,        MEM_WB_sync_rst;

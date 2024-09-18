@@ -23,20 +23,24 @@ def wire_defines_parser(wire_defines_path:str) -> tuple[dict[str, tuple[list[str
 
     Returns:
         tuple[dict[str, tuple[list[str], str]], dict[str, list]]: (signal_dict, stage_dict)
-    """    
+    """
+    # regex
+    valid_line_pattern = re.compile(r"^(?:wire|reg) +(\[.*\])?\s*((?:(?:IF|ID|EX|MEM|WB)+_\w+_w(?:,|;)\s*)+)")
+    valid_signal_pattern = re.compile(r"(IF|ID|EX|MEM|WB)_(\w+)_w")
+    
     with open(wire_defines_path) as defines_file:
         signal_dict: dict[str, tuple[list[str], str]] = {}
         stage_dict: dict[str, list] = {}
         for line in defines_file.readlines():
             # match总是从字符串开头查找, 返回Match对象
-            if (line_match := re.match(r"^(?:wire|reg) +(\[.*\])?(.*)", line)) is not None:
+            if (line_match := re.match(valid_line_pattern, line)) is not None:
                 # 每一合法的定义
                 # 信号位宽定义
                 singnal_width = line_match.group(1) if line_match.group(1) is not None else ""
                 signals = line_match.group(2)
                 # findall查找所有符合正则表达式的部分, 返回包含每一个匹配组查找结果的列表
                 # e.g. [('IF', 'PC'), ('ID', 'PC'), ('EX', 'PC'), ('MEM', 'PC'), ('WB', 'PC')]
-                signal_infos = re.findall(r"(IF|ID|EX|MEM|WB)_(\w+)_w", signals)
+                signal_infos = re.findall(valid_signal_pattern, signals)
                 signal_dict[signal_infos[0][1]] = ([group[0] for group in signal_infos], singnal_width)
                 for signal_info in signal_infos:
                     stage, signal = signal_info
